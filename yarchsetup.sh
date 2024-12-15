@@ -45,4 +45,18 @@ echo "alias yukifetch='neofetch --kitty ~/Downloads/images/ASCIIyuki.png'" >> ~/
 echo "Running blahaj to apply changes to .bashrc..."
 blahaj -c trans ~/.bashrc
 
+# Add Waybar to autostart menu
+echo "Adding Waybar to autostart..."
+mkdir -p ~/.config/autostart
+cat <<EOF > ~/.config/autostart/waybar.desktop
+[Desktop Entry]
+Type=Application
+Exec=waybar
+Hidden=false
+NoDisplay=false
+X-GNOME-Autostart-enabled=true
+Name=Waybar
+Comment=Start Waybar on login
+EOF
+
 echo "Installation complete!"
