@@ -61,10 +61,6 @@ else
     echo "Alias yukifetch already exists in ~/.bashrc."
 fi
 
-# Apply changes to .bashrc
-echo "Running blahaj to apply changes to .bashrc..."
-blahaj -c trans ~/.bashrc
-
 # Add Waybar to the autostart menu
 AUTOSTART_DIR=~/.config/autostart
 AUTOSTART_FILE=$AUTOSTART_DIR/waybar.desktop
