@@ -10,7 +10,7 @@ sudo pacman -Syu --noconfirm
 
 # Install required packages from official repositories
 echo "Installing official packages..."
-sudo pacman -S --noconfirm kitty waybar git code neofetch krita gimp eyedropper slurp grim ttf-font-awesome bottom
+sudo pacman -S --noconfirm kitty waybar git code neofetch krita gimp eyedropper slurp grim ttf-font-awesome bottom unzip nvidia
 
 # Clone the AUR helper repository (yay) if it doesn't exist
 if [ ! -d yay ]; then
@@ -26,7 +26,7 @@ fi
 
 # Install AUR packages using yay
 echo "Installing AUR packages..."
-yay -S --noconfirm brave blahaj hyfetch obs vesktop wlogout bitwarden nerd-fonts-complete-mono-glyphs spotify-tui
+yay -S --noconfirm brave blahaj hyfetch obs vesktop wlogout bitwarden nerd-fonts-complete-mono-glyphs spotify-tui spotify
 
 # Set the Kitty theme to Catppuccin-Frappe
 echo "Setting Kitty theme to Catppuccin-Frappe..."
@@ -69,5 +69,9 @@ EOF
 else
     echo "Waybar is already in the autostart menu."
 fi
+
+#for waybar scripts
+sudo mkdir /etc/xdg/waybar/scripts/
+sudo cp -r /home/yuki/yArch/scripts/* /etc/xdg/waybar/scripts/
 
 echo "Installation script complete!"

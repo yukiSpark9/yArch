@@ -8,26 +8,17 @@ kitten choose-fonts
 In kitty.conf:
 - set kitty background-opacity to 0.7
 - turn off window decorations (maybe?)
-In waybar’s .jsonc:
-    "margin-bottom": 0,
-    "margin-top": 3,
-For windows (or smthing i forgot- its near the top)
+waybar credit -> https://github.com/RenaudAlly/dotfiles/blob/main/
+
 In kde sys settings:
-- Keybinds for super + mouse
-- set bsckground (i like https://www.hdwallpapers.in/purple_eyes_anime_girl_with_white_dress_sitting_near_black_cat_4k_hd_anime_girl-wallpapers.html)
+- Keybinds for super + mouse ->alt +mouse
+- set bsckground (i like
+horizontal - https://www.hdwallpapers.in/purple_eyes_anime_girl_with_white_dress_sitting_near_black_cat_4k_hd_anime_girl-wallpapers.html
+
+vertical - https://www.wallpaperflare.com/cat-cyberpunk-neon-reflection-vaporwave-wallpaper-ucsbu)
 
 steam might not install correctly ;-;
-For yuki:
-Waybar fix:
-"format": "<b>󰥔 {:%H:%M 󰃭 %d/%m}</b>"
-And this:
 
-"custom/launcher":{
-        "format": "",
-        "on-click": "kitty",
-    },
-    "custom/power":{
-        "format": "⏻",
-        "on-click": "wlogout",
-    },
+setup spotifytui and spotify
 
+drop scripts into waybar folder
