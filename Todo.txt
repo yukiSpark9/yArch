@@ -16,6 +16,7 @@ In kde sys settings:
 - Keybinds for super + mouse
 - set bsckground (i like https://www.hdwallpapers.in/purple_eyes_anime_girl_with_white_dress_sitting_near_black_cat_4k_hd_anime_girl-wallpapers.html)
 
+steam might not install correctly ;-;
 For yuki:
 Waybar fix:
 "format": "<b>󰥔 {:%H:%M 󰃭 %d/%m}</b>"
