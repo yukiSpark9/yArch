@@ -1,4 +1,4 @@
-![Project Logo](screenshot!.png)
+![screenshot](screenshot!)
 
 yippeee~! 
 
