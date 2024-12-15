@@ -22,3 +22,5 @@ steam might not install correctly ;-;
 setup spotifytui and spotify
 
 drop scripts into waybar folder
+
+drop the hyfetc.conf without the ascii art into the neofetch.conf

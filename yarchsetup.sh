@@ -10,7 +10,7 @@ sudo pacman -Syu --noconfirm
 
 # Install required packages from official repositories
 echo "Installing official packages..."
-sudo pacman -S --noconfirm kitty waybar git code neofetch krita gimp eyedropper slurp grim ttf-font-awesome bottom unzip nvidia imagemagick
+sudo pacman -S --noconfirm kitty waybar git code neofetch krita gimp eyedropper slurp grim ttf-font-awesome bottom unzip nvidia imagemagick wayland-utils spectacle
 
 # Clone the AUR helper repository (yay) if it doesn't exist
 if [ ! -d yay ]; then
