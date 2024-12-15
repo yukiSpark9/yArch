@@ -1,25 +1,30 @@
 #!/bin/bash
 
-# This script will install various packages and dependencies on an Arch-based system.
+# This script installs various packages and dependencies on an Arch-based system.
+
+echo "Starting the installation script..."
 
 # Update the system first
 echo "Updating system..."
 sudo pacman -Syu --noconfirm
 
-# Install required packages from official repositories, including bottom and other utilities
+# Install required packages from official repositories
 echo "Installing official packages..."
 sudo pacman -S --noconfirm kitty waybar git code neofetch krita gimp eyedropper slurp grim ttf-font-awesome bottom
 
-# Clone the AUR helper repository (yay)
-echo "Cloning AUR helper (yay)..."
-git clone https://aur.archlinux.org/yay.git
+# Clone the AUR helper repository (yay) if it doesn't exist
+if [ ! -d yay ]; then
+    echo "Cloning AUR helper (yay)..."
+    git clone https://aur.archlinux.org/yay.git
+    cd yay
+    echo "Building yay AUR helper..."
+    makepkg -si --noconfirm
+    cd ..
+else
+    echo "Yay is already cloned and installed."
+fi
 
-# Enter the yay directory and build it
-cd yay
-echo "Building yay AUR helper..."
-makepkg -si --noconfirm
-
-# Install AUR packages using yay, including spotify-tui
+# Install AUR packages using yay
 echo "Installing AUR packages..."
 yay -S --noconfirm brave blahaj hyfetch obs vesktop wlogout bitwarden nerd-fonts-complete-mono-glyphs spotify-tui
 
@@ -28,27 +33,45 @@ echo "Setting Kitty theme to Catppuccin-Frappe..."
 kitty +kitten themes --reload-in=all Catppuccin-Frappe
 
 # Clone and install the Catppuccin KDE theme
-echo "Cloning and installing Catppuccin KDE theme..."
-git clone --depth=1 https://github.com/catppuccin/kde catppuccin-kde && cd catppuccin-kde
-./install.sh
+if [ ! -d catppuccin-kde ]; then
+    echo "Cloning and installing Catppuccin KDE theme..."
+    git clone --depth=1 https://github.com/catppuccin/kde catppuccin-kde
+    cd catppuccin-kde
+    ./install.sh
+    cd ..
+else
+    echo "Catppuccin KDE theme is already installed."
+fi
 
-# Download the ASCII art image to the desired directory
-echo "Downloading ASCIIyuki.png to ~/Downloads/images..."
-mkdir -p ~/Downloads/images
-curl -o ~/Downloads/images/ASCIIyuki.png "https://cdn.discordapp.com/attachments/776616264344928257/1317694113889521764/image0.jpg?ex=675f9dc6&is=675e4c46&hm=14d619bc5b34dec4b178074ed34101db764a0cd5de7358736a7135b63cb44594&"
+# Download the ASCII art image
+ASCII_IMAGE_PATH=~/Downloads/images/ASCIIyuki.png
+if [ ! -f "$ASCII_IMAGE_PATH" ]; then
+    echo "Downloading ASCIIyuki.png to ~/Downloads/images..."
+    mkdir -p ~/Downloads/images
+    curl -o "$ASCII_IMAGE_PATH" "https://cdn.discordapp.com/attachments/776616264344928257/1317694113889521764/image0.jpg"
+else
+    echo "ASCIIyuki.png already exists."
+fi
 
-# Add the alias to ~/.bashrc
-echo "Adding alias to ~/.bashrc..."
-echo "alias yukifetch='neofetch --kitty ~/Downloads/images/ASCIIyuki.png'" >> ~/.bashrc
+# Add the alias to ~/.bashrc if not already present
+if ! grep -q "alias yukifetch" ~/.bashrc; then
+    echo "Adding alias to ~/.bashrc..."
+    echo "alias yukifetch='neofetch --kitty ~/Downloads/images/ASCIIyuki.png'" >> ~/.bashrc
+else
+    echo "Alias yukifetch already exists in ~/.bashrc."
+fi
 
-# Apply the changes to .bashrc
+# Apply changes to .bashrc
 echo "Running blahaj to apply changes to .bashrc..."
 blahaj -c trans ~/.bashrc
 
-# Add Waybar to autostart menu
-echo "Adding Waybar to autostart..."
-mkdir -p ~/.config/autostart
-cat <<EOF > ~/.config/autostart/waybar.desktop
+# Add Waybar to the autostart menu
+AUTOSTART_DIR=~/.config/autostart
+AUTOSTART_FILE=$AUTOSTART_DIR/waybar.desktop
+if [ ! -f "$AUTOSTART_FILE" ]; then
+    echo "Adding Waybar to autostart..."
+    mkdir -p "$AUTOSTART_DIR"
+    cat <<EOF > "$AUTOSTART_FILE"
 [Desktop Entry]
 Type=Application
 Exec=waybar
@@ -56,7 +79,9 @@ Hidden=false
 NoDisplay=false
 X-GNOME-Autostart-enabled=true
 Name=Waybar
-Comment=Start Waybar on login
 EOF
+else
+    echo "Waybar is already in the autostart menu."
+fi
 
-echo "Installation complete!"
+echo "Installation script complete!"
