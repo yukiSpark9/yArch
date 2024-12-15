@@ -43,20 +43,10 @@ else
     echo "Catppuccin KDE theme is already installed."
 fi
 
-# Download the ASCII art image
-ASCII_IMAGE_PATH=~/Downloads/images/ASCIIyuki.png
-if [ ! -f "$ASCII_IMAGE_PATH" ]; then
-    echo "Downloading ASCIIyuki.png to ~/Downloads/images..."
-    mkdir -p ~/Downloads/images
-    curl -o "$ASCII_IMAGE_PATH" "https://cdn.discordapp.com/attachments/776616264344928257/1317694113889521764/image0.jpg"
-else
-    echo "ASCIIyuki.png already exists."
-fi
-
 # Add the alias to ~/.bashrc if not already present
 if ! grep -q "alias yukifetch" ~/.bashrc; then
     echo "Adding alias to ~/.bashrc..."
-    echo "alias yukifetch='neofetch --kitty ~/Downloads/images/ASCIIyuki.png'" >> ~/.bashrc
+    echo "alias yukifetch='neofetch --kitty ~/yArch/IMG_4538.jpg'" >> ~/.bashrc
 else
     echo "Alias yukifetch already exists in ~/.bashrc."
 fi
