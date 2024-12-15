@@ -20,6 +20,7 @@ vertical - https://www.wallpaperflare.com/cat-cyberpunk-neon-reflection-vaporwav
 steam might not install correctly ;-;
 
 setup spotifytui and spotify
+spotify on startup in app settings
 
 drop scripts into waybar folder
 
