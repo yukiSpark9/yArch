@@ -71,12 +71,13 @@ color: #E8A2AF;
 margin-top: 6px;
 margin-left: 8px;
 padding-left: 10px;
-padding-right: 18px;
+padding-right: 10px;
 margin-bottom: 0px;
 border-radius: 10px;
 transition: none;
 color: #161320;
 background: #bd93f9;
+font-size:150%;
 }
 
 #pulseaudio {
@@ -206,6 +207,24 @@ border-radius: 10px;
 transition: none;
 color: #1A1826;
 background: #FAE3B0;
+}
+#custom-filesys, #custom-browser, #custom-system {
+font-size: 24px;
+margin-top: 6px;
+margin-left: 8px;
+padding-left: 10px;
+padding-right: 10px;
+transition: none;
+color: #1A1826;
+}
+#custom-filesys{
+background: #f6d1f7;
+}
+#custom-browser{
+background: #ecad67;
+}
+#custom-system{
+background: #0dec8b;
 }
 #custom-power {
 font-size: 20px;
