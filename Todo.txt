@@ -25,3 +25,5 @@ spotify on startup in app settings
 drop scripts into waybar folder
 
 drop the hyfetc.conf without the ascii art into the neofetch.conf
+
+change the bashrc. to the one included
